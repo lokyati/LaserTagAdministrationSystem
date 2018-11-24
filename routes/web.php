@@ -24,3 +24,7 @@ Route::prefix('admin')->group(function() {
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/email', function () {
+    return view('auth.passwords.reset');
+});

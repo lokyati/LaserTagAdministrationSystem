@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'LaserTag') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'LaserTag') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -53,14 +53,14 @@
     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @if (Auth::guard('admin')->check())
-                                            <a class="dropdown-item" href="http://laravelapp/admin/dashboard">Dashboard</a>
+                                            <a class="dropdown-item" href="http://laravelapp/admin/dashboard">Vezérlőpult-Admin</a>
                                         @else   
-                                            <a class="dropdown-item" href="http://laravelapp/dashboard">Dashboard</a> 
+                                            <a class="dropdown-item" href="http://laravelapp/dashboard">Vezérlőpult</a> 
                                         @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('Kijelentkezés') }}
                                         </a>
     
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -71,20 +71,20 @@
                         @else
                         <li class="nav-item dropdown">
                                 <a id="linkDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Login') }}
+                                    {{ __('Belépés') }}
                                     <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="linkDropdown">
                                     <a class="dropdown-item" href="{{ route('login') }}">
-                                        {{ __('User') }}
+                                        {{ __('Felhasználó') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('admin.login') }}">
                                         {{ __('Admin') }}
                                     </a>
                                 </div>
                             </li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Regisztráció') }}</a></li>
                         @endif
                     </ul>
                 </div>
