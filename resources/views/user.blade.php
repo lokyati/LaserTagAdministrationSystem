@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Be vagy jelentkezve!
+                    Be vagy jelentkezve?
                 </div>
             </div>
         </div>

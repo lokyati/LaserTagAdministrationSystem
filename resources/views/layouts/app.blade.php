@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'LaserTag') }}</title>
+    <title>LaserTag</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,9 +24,16 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'LaserTag') }}
-                </a>
+                @if (Auth::guard('admin')->check())
+                    <a class="navbar-brand" href="{{ url('/admin/dashboard') }}">
+                        LaserTag - Admin felulet
+                    </a>
+                @else 
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        LaserTag
+                    </a>
+                @endif
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -53,15 +60,21 @@
     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @if (Auth::guard('admin')->check())
-                                            <a class="dropdown-item" href="http://laravelapp/admin/dashboard">Vezérlőpult-Admin</a>
+                                            <a class="dropdown-item" href="{{ url('/admin/dashboard') }}">Vezérlőpult</a> <!--admin eseteben nincs fooldal csak a dashboard-->
+                                            <a class="dropdown-item" href=""
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Kijelentkezés') }}
+                                            </a>
                                         @else   
-                                            <a class="dropdown-item" href="http://laravelapp/dashboard">Vezérlőpult</a> 
+                                            <a class="dropdown-item" href="{{ url('/profil') }}">Profilom</a> <!--a felhasznalo alapbol a fooldalra kerul, a profilt (sajat dashboardjat) a profilom fullel eri el-->
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                    {{ __('Kijelentkezés') }}
+                                                </a>
                                         @endif
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Kijelentkezés') }}
-                                        </a>
+                                        
     
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
