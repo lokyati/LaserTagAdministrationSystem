@@ -54,10 +54,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Belépés') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Elfelejtetted a jelszavad?') }}
-                                </a>
                             </div>
                         </div>
                     </form>

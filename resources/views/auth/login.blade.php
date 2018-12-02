@@ -55,7 +55,7 @@
                                     {{ __('Belépés') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ url('/email') }}">
                                     {{ __('Elfelejtetted a jelszavad?') }}
                                 </a>
                             </div>
