@@ -14,18 +14,25 @@
 Route::get('/', function () {
     return view('layouts.app');
 });
+Auth::routes();
 
+//Admin Authentication Routes
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
 });
 
-Auth::routes();
-
+//User Authentication Routes
 Route::get('/profil', 'UserController@index')->name('profil');
 Route::get('/home', 'UserController@home')->name('home');
+
 
 Route::get('/email', function () {
     return view('auth.passwords.reset');
 });
+
+//Password Reset Routes
+Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/email', 'Auth\ResetPasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
