@@ -33,6 +33,12 @@ Route::get('/email', 'Auth\ResetPasswordController@getEmailForm');
 Route::post('password/email', 'Auth\ResetPasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'ResetController@reset');
 
+//Navbar Routes
+Route::get('/calendar', function () {
+    return view('userNav.calendar');
+});
+
+
 /*Route::get('/email', function () {
     return view('auth.passwords.reset');
 });

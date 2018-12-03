@@ -1,0 +1,11 @@
+footer{
+	width: 100%;
+	border: 1px solid black;
+	padding: 15px;
+	font-weight: bold;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

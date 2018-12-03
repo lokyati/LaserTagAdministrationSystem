@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Be vagy jelentkezve es a fooldalt latod.
+                    Be vagy jelentkezve és a főoldalt látod.
                 </div>
             </div>
         </div>

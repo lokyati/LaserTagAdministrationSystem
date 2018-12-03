@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -43,6 +44,15 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
+                    
+                    <!-- Navbar for User -->
+                    @if (Auth::guard('user')->check() || Auth::guard()->check())
+                        <ul>
+                          <li><a href="{{ url('/calendar') }}">Foglalás</a></li>
+                        </ul> 
+                    @else
+
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -82,22 +92,10 @@
                                     </div>
                                 </li>
                         @else
-                        <li class="nav-item dropdown">
-                                <a id="linkDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('Belépés') }}
-                                    <span class="caret"></span>
-                                </a>
+                        
 
-                                <div class="dropdown-menu" aria-labelledby="linkDropdown">
-                                    <a class="dropdown-item" href="{{ route('login') }}">
-                                        {{ __('Felhasználó') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('admin.login') }}">
-                                        {{ __('Admin') }}
-                                    </a>
-                                </div>
-                            </li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Regisztráció') }}</a></li>
+                            <li><a class="user_button" href="{{ route('login') }}">{{ __('Felhasználó') }}</a></li>
+                            <li><a class="registration_button" href="{{ route('register') }}">{{ __('Regisztráció') }}</a></li>
                         @endif
                     </ul>
                 </div>
@@ -107,6 +105,17 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>
+            Footer <br>
+            @if (Auth::guard('user')->check())
+                <a class="admin_button" href="{{ route('admin.login') }}" style="display: none;"></a>
+            @else 
+                <a class="admin_button" href="{{ route('admin.login') }}">
+                    {{ __('Admin belépés') }}
+                </a>
+            @endif
+            
+        </footer>
     </div>
 </body>
 </html>
