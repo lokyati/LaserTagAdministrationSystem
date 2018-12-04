@@ -48,3 +48,9 @@ Route::get('/calendar', function () {
 Route::get('/email', function () {
     return view('auth.passwords.email')->name('passwords.email');
 });*/
+
+
+//Test Route
+Route::get('/landing', function () {
+    return view('layouts.landing');
+});
